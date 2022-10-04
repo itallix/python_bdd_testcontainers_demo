@@ -1,0 +1,49 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "api"
+version = "0.1.0"
+description = "Python project to demo bdd with testcontainers"
+authors = ["Vitalii Karniushin <vkrnsn@duck.com>"]
+license = "MIT"
+
+[tool.poetry.scripts]
+"api" = "api:main"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<4"
+SQLAlchemy = "^1.4.41"
+pyodbc = "^4.0.34"
+google-cloud-datastore = "^2.8.1"
+
+[tool.poetry.dev-dependencies]
+black = "^21.6b0"
+autopep8 = "^1.5.7"
+pytest = "^6.2.4"
+coverage = {extras = ["toml"], version = "^5.5"}
+pytest-cov = "^2.12.1"
+pytest-bdd = "^6.0.1"
+psutil = "^5.9.2"
+pytest-env = "^0.6.2"
+testcontainers = "3.4.1"
+
+[tool.black]
+line-length = 80
+
+[tool.coverage.paths]
+source = ["api"]
+
+[tool.coverage.run]
+branch = true
+source = ["api"]
+
+[tool.coverage.report]
+show_missing = true
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+env = [
+    "D:PROJECT=test-project",
+]
